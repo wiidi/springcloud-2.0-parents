@@ -15,3 +15,33 @@ eureka:
     register-with-eureka: true
 ###是否需要从eureka上获取注册信息
     fetch-registry: true
+
+#Sprigcloud  feign 默认开启ribbon  ribbon 负载均衡
+#如果不设置，如果请求时间过长会导致失败
+###设置feign客户端超时时间
+ribbon:
+###指的是建立连接所用的时间，适用于网络状况正常的情况下，两端连接所用的时间。
+  ReadTimeout: 5000
+###指的是建立连接后从服务器读取到可用资源所用的时间。
+  ConnectTimeout: 5000
+#开启服务熔断
+feign:
+  hystrix:
+    enabled: true
+
+#### hystrix禁止服务超时时间
+#hystrix:
+#  command:
+#    default:
+#      execution:
+#        timeout:
+#          enabled: false
+
+#### 设置默认Hystrix超时时间
+#hystrix:
+#  command:
+#    default:
+#      execution:
+#        isolation:
+#          thread:
+#            timeoutInMilliseconds: 5000
