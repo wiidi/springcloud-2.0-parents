@@ -28,6 +28,9 @@ ribbon:
 feign:
   hystrix:
     enabled: true
+#swagger扫包
+swagger:
+  base-package: com.wudi.springcloudorderimpl
 
 #### hystrix禁止服务超时时间
 #hystrix:

@@ -6,7 +6,11 @@ import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.wudi.springcloudapimember.entity.UserEntity;
 import com.wudi.springcloudapiorder.service.IOrderService;
 import com.wudi.springcloudorderimpl.feign.MemberServiceFeign;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,10 +26,24 @@ import org.springframework.web.bind.annotation.RestController;
  * Copyright (c) 2018,武汉中地云申科技有限公司
  * All rights reserved.
  **/
+@Api("订单服务接口")
 @RestController
 public class OrderServiceImpl extends BaseApiService implements IOrderService {
     @Autowired
     private MemberServiceFeign memberServiceFeign;
+
+    @RequestMapping("/")
+    public String index() {
+        return "我是order项目默认方法！";
+    }
+
+    @ApiOperation("获取订单相关信息")
+    @ApiImplicitParam(name = "userName", value = "用户信息参数", required = true, dataType = "String")
+    @PostMapping("/getOrderSwagger")
+    public String getOrderSwagger(String userName) {
+        System.out.println("userName" + userName);
+        return "userName" + userName;
+    }
 
     @RequestMapping("/orderToMember")
     //不加@RequestParam，name取不到值

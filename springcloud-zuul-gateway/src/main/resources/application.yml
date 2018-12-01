@@ -4,7 +4,7 @@ eureka:
     serviceUrl:
       defaultZone: http://localhost:8100/eureka/
 server:
-  port: 88
+  port: 81
 ###网关名称
 spring:
   application:
