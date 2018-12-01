@@ -13,12 +13,18 @@
         <module>springcloud-order-impl</module>
         <module>springcloud-member-impl</module>
         <module>springcloud-eureka-server</module>
+        <module>spring-common</module>
+        <module>springcloud-config-server</module>
+        <module>springcloud-config-client</module>
+        <module>springcloud-zuul-gateway</module>
+        <module>springcloud-api</module>
     </modules>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.1.0.RELEASE</version>
+        <version>2.0.1.RELEASE</version>
+        <!--<version>2.1.0.RELEASE</version>-->
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
@@ -41,6 +47,16 @@
         </dependencies>
     </dependencyManagement>
     <dependencies>
+        <!--springboot基础依赖-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
         <!-- SpringBoot整合Web组件 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -51,7 +67,7 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
-        <!-- SpringBoot整合fegnin客户端 -->
+        <!-- SpringBoot整合feign客户端 -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-openfeign</artifactId>
@@ -62,16 +78,12 @@
             <artifactId>lombok</artifactId>
         </dependency>
 
+        <!--Hystrix 解决雪崩效应-->
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
 
     </dependencies>
     <!-- 注意： 这里必须要添加， 否者各种依赖有问题 -->
@@ -86,4 +98,12 @@
         </repository>
     </repositories>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 </project>
