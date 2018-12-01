@@ -3,6 +3,7 @@ package com.wudi.springcloudzuulgateway.filter;
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
 import com.netflix.zuul.exception.ZuulException;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
@@ -19,8 +20,12 @@ import javax.servlet.http.HttpServletRequest;
  * Copyright (c) 2018,武汉中地云申科技有限公司
  * All rights reserved.
  **/
-@Component
+//@Component
 public class TokenFilter  extends ZuulFilter{
+
+    @Value("${server.port}")
+    private String serverPort;
+
     @Override
     //过滤器类型  pre表示在请求之前执行
     public String filterType() {
@@ -59,6 +64,7 @@ public class TokenFilter  extends ZuulFilter{
             //返回错误提示
         }
         //正常调用服务接口
+        System.out.println("网关服务器端口号："+serverPort);
         return null;
     }
 }

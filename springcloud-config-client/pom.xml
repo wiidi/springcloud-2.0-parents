@@ -30,7 +30,14 @@
 			<artifactId>spring-cloud-config-client</artifactId>
 		</dependency>
 
-	</dependencies>
+        <!-- actuator监控中心 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+
+
+    </dependencies>
 
 	<build>
 		<plugins>

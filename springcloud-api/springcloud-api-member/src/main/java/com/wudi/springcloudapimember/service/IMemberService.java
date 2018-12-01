@@ -1,5 +1,6 @@
 package com.wudi.springcloudapimember.service;
 
+import com.itmayiedu.base.ResponseBase;
 import com.wudi.springcloudapimember.entity.UserEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,4 +21,9 @@ public interface IMemberService {
     @RequestMapping("/getMember")
     //不加@RequestParam，name取不到值
     public UserEntity getMember(@RequestParam("name") String name);
+
+
+    @RequestMapping("/getUserInfo")
+    public ResponseBase getUserInfo();
+
 }
